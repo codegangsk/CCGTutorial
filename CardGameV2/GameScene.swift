@@ -38,4 +38,13 @@ class GameScene: SKScene {
     bear.position = CGPoint(x: 300, y: 200)
     addChild(bear)
     }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            if let card = atPoint(location) as? Card {
+                card.position = location 
+            }
+        }
+    }
 }
