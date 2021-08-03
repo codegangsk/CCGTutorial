@@ -22,8 +22,13 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+enum CardLevel:CGFloat {
+    case board = 10
+    case moving = 100
+    case enlarged = 200
+}
 
+class GameScene: SKScene {
   override func didMove(to view: SKView) {
     let bg = SKSpriteNode(imageNamed: "bg_blank")
     bg.anchorPoint = CGPoint.zero
@@ -44,6 +49,26 @@ class GameScene: SKScene {
             let location = touch.location(in: self)
             if let card = atPoint(location) as? Card {
                 card.position = location 
+            }
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            if let card = atPoint(location) as? Card {
+                card.zPosition = CardLevel.moving.rawValue
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            if let card = atPoint(location) as? Card {
+                card.zPosition = CardLevel.board.rawValue
+                card.removeFromParent()
+                addChild(card)
             }
         }
     }
