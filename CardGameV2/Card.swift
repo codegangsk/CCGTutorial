@@ -32,6 +32,7 @@ class Card : SKSpriteNode {
     let cardType : CardType
     let frontTexture : SKTexture
     let backTexture : SKTexture
+    var faceUp = true
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -52,5 +53,16 @@ class Card : SKSpriteNode {
         
         super.init(texture: frontTexture, color: .clear, size: frontTexture.size())
     }
+    
+    func flip() {
+        if faceUp {
+            self.texture = backTexture
+        } else {
+            self.texture = frontTexture
+        }
+        faceUp = !faceUp
+        
+    }
 }
+
 

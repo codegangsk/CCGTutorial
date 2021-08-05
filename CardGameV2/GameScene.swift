@@ -60,6 +60,9 @@ class GameScene: SKScene {
                 card.zPosition = CardLevel.moving.rawValue
                 card.removeAction(forKey: "drop")
                 card.run(SKAction.scale(to: 1.3, duration: 0.25), withKey: "pickup")
+                if touch.tapCount > 1 {
+                    card.flip()
+                }
             }
         }
     }
