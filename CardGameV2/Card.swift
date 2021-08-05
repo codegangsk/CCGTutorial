@@ -55,14 +55,23 @@ class Card : SKSpriteNode {
     }
     
     func flip() {
+        let firstHalfFlip = SKAction.scaleX(to: 0.0, duration: 0.4)
+        let secondHalfFlip = SKAction.scaleX(to: 1.0, duration: 0.4)
+        
+        setScale(1.0)
+        
         if faceUp {
-            self.texture = backTexture
+            run(firstHalfFlip) {
+                self.texture = self.backTexture
+                self.run(secondHalfFlip)
+            }
         } else {
-            self.texture = frontTexture
+            run(firstHalfFlip) {
+                self.texture = self.frontTexture
+                self.run(secondHalfFlip)
+            }
         }
         faceUp = !faceUp
-        
     }
 }
-
 
