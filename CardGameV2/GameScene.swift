@@ -35,13 +35,13 @@ class GameScene: SKScene {
     bg.position = CGPoint.zero
     addChild(bg)
     
-    let wolf = Card(cardType: .wolf)
-    wolf.position = CGPoint(x: 100, y: 200)
-    addChild(wolf)
+    let fool = Card(cardType: .fool)
+    fool.position = CGPoint(x: 100, y: 200)
+    addChild(fool)
     
-    let bear = Card(cardType: .bear)
-    bear.position = CGPoint(x: 300, y: 200)
-    addChild(bear)
+    let magician = Card(cardType: .magician)
+    magician.position = CGPoint(x: 300, y: 200)
+    addChild(magician)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -23,9 +23,8 @@
 import SpriteKit
 
 enum CardType : Int {
-    case wolf,
-         bear,
-         dragon
+    case fool,
+         magician
 }
 
 class Card : SKSpriteNode {
@@ -40,15 +39,13 @@ class Card : SKSpriteNode {
     
     init(cardType : CardType) {
         self.cardType = cardType
-        backTexture = SKTexture(imageNamed: "card_back")
+        backTexture = SKTexture(imageNamed: "smith_back")
         
         switch cardType {
-        case .wolf:
-            frontTexture = SKTexture(imageNamed: "card_creature_wolf")
-        case .bear:
-            frontTexture = SKTexture(imageNamed: "card_creature_bear")
-        case .dragon:
-            frontTexture = SKTexture(imageNamed: "card_creature_dragon")
+        case .fool:
+            frontTexture = SKTexture(imageNamed: "fool")
+        case .magician:
+            frontTexture = SKTexture(imageNamed: "magician")
         }
         
         super.init(texture: frontTexture, color: .clear, size: frontTexture.size())
